@@ -12,7 +12,7 @@ Pre-built packages for recent distro releases (ubuntu, debian, fedora, opensuse)
 
 ## Install Packages
 
-`translate-shell` is required for the default Google engine, Bing, and audio playback.
+`translate-shell` is required for the default key-less Google engine, Bing, and audio playback.
 
 ### Ubuntu 25.04+
 
