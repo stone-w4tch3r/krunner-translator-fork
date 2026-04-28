@@ -16,6 +16,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: ubuntu
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: ubuntu:25.04
       pkg_manager: apt
       cpack_gen: DEB
@@ -26,6 +27,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: fedora
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: fedora:42
       pkg_manager: dnf
       cpack_gen: RPM
@@ -36,6 +38,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: opensuse
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: opensuse/tumbleweed
       pkg_manager: zypper
       cpack_gen: RPM
@@ -46,6 +49,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: ubuntu
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: ubuntu:25.04
       pkg_manager: apt
       cpack_gen: DEB
@@ -56,6 +60,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: fedora
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: fedora:42
       pkg_manager: dnf
       cpack_gen: RPM
@@ -66,6 +71,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: opensuse
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: opensuse/tumbleweed
       pkg_manager: zypper
       cpack_gen: RPM
@@ -76,6 +82,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: debian
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: debian:trixie
       pkg_manager: apt
       cpack_gen: DEB
@@ -86,6 +93,7 @@ jobs:
     uses: ./.github/workflows/build-package.yml
     with:
       distro: debian
+      package_version: ${{ github.event.inputs.tag }}
       docker_image: debian:trixie
       pkg_manager: apt
       cpack_gen: DEB

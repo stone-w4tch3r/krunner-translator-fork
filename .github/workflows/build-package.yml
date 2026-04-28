@@ -6,6 +6,9 @@ on:
       distro:
         required: true
         type: string
+      package_version:
+        required: false
+        type: string
       docker_image:
         required: true
         type: string
@@ -64,7 +67,17 @@ jobs:
             translate-shell rpm-build
 
       - name: Configure
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+        run: |
+          PACKAGE_VERSION="${{ inputs.package_version }}"
+          if [ -z "$PACKAGE_VERSION" ]; then
+            PACKAGE_VERSION="${GITHUB_REF_NAME#v}"
+          else
+            PACKAGE_VERSION="${PACKAGE_VERSION#v}"
+          fi
+          cmake -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DPACKAGE_DISTRO=${{ inputs.distro }} \
+            -DPACKAGE_VERSION="$PACKAGE_VERSION"
 
       - name: Build
         run: cmake --build build --parallel

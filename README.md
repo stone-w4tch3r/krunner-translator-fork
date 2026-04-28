@@ -8,7 +8,54 @@ This is a plugin for Plasma 6 KRunner. It's a translator and it translates text.
 
 [![Logo Arch Linux](../../wiki/logos/arch_linux.png)](https://aur.archlinux.org/packages/plasma6-runners-translator)
 
-Pre-built packages for recent distro releases (ubuntu, fedora, opensuse) are available on the [GitHub Releases page](https://github.com/naraesk/krunner-translator/releases).
+Pre-built packages for recent distro releases (ubuntu, debian, fedora, opensuse) are available on the [GitHub Releases page](https://github.com/naraesk/krunner-translator/releases).
+
+## Install Packages
+
+`translate-shell` is required for the default Google engine, Bing, and audio playback.
+
+### Ubuntu 25.04+
+
+`translate-shell` is packaged in Ubuntu `multiverse`. Ubuntu usually enables this by default, but enabling it explicitly keeps package installs reliable:
+
+```sh
+sudo add-apt-repository multiverse
+sudo apt update
+sudo apt install ./krunner-translator-ubuntu-amd64.deb
+```
+
+Replace the file name with the package you downloaded from the release page.
+
+### Debian trixie
+
+The plugin package installs directly, but `translate-shell` is only available from Debian `contrib`, which is not enabled in stock sources. If you want Google/Bing/audio support, enable `contrib` first and then install the package:
+
+```sh
+sudo editor /etc/apt/sources.list.d/debian.sources
+```
+
+Add `contrib` to each `Components:` line, then run:
+
+```sh
+sudo apt update
+sudo apt install ./krunner-translator-debian-amd64.deb
+```
+
+See the Debian sources format reference for the exact file structure: <https://wiki.debian.org/SourcesList>
+
+### Fedora 42
+
+```sh
+sudo dnf install ./krunner-translator-fedora-amd64.rpm
+```
+
+### openSUSE Tumbleweed
+
+```sh
+sudo zypper install ./krunner-translator-opensuse-amd64.rpm
+```
+
+Replace the file names above with the package matching your distro and architecture.
 
 ## Building from source
 
