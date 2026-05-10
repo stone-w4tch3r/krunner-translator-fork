@@ -21,6 +21,8 @@ private Q_SLOTS:
     void testValidSourceTargetLanguage();
     void testInvalidLanguageAbbreviation();
     void testInvalidSourceTargetLanguage();
+    void testIssue34InvalidSingleLanguageReproducer();
+    void testIssue34InvalidSourceTargetReproducer();
     void testEmptyQuery();
     void testNoSpaceInQuery();
 

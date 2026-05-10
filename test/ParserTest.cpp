@@ -40,6 +40,26 @@ void ParserTest::testInvalidSourceTargetLanguage() {
     delete query;
 }
 
+void ParserTest::testIssue34InvalidSingleLanguageReproducer() {
+    TranslationQuery *query = parser.parse(QStringLiteral("deeeee e"));
+    QVERIFY(query != nullptr);
+    query->updateSourceLanguage(SupportedLanguage::English, SupportedLanguage::Spanish);
+    QCOMPARE(query->getSourceAbbreviation(), QStringLiteral("en"));
+    QVERIFY(query->getTargetAbbreviation().isEmpty());
+    QVERIFY(!query->isValid());
+    delete query;
+}
+
+void ParserTest::testIssue34InvalidSourceTargetReproducer() {
+    TranslationQuery *query = parser.parse(QStringLiteral("abc-abc a"));
+    QVERIFY(query != nullptr);
+    query->updateSourceLanguage(SupportedLanguage::English, SupportedLanguage::Spanish);
+    QCOMPARE(query->getSourceAbbreviation(), QStringLiteral("en"));
+    QVERIFY(query->getTargetAbbreviation().isEmpty());
+    QVERIFY(!query->isValid());
+    delete query;
+}
+
 void ParserTest::testEmptyQuery() {
     TranslationQuery *query = parser.parse(QStringLiteral(""));
     QVERIFY(query != nullptr);
